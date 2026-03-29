@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chatkart-commons"
+version = "0.1.0"
+description = "Shared MongoDB data-access layer for ChatKart services"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "motor>=3.6.0",
+  "pymongo>=4.10.0",
+  "pydantic>=2.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "pytest-asyncio>=0.24.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["commons*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
